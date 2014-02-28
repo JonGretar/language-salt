@@ -1,6 +1,6 @@
 {
   "name": "language-salt",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "Atome Language files for SaltStack",
   "repository": "https://github.com/JonGretar/language-salt",
