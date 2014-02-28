@@ -1,0 +1,6 @@
+{
+  "fileTypes": [ "sls" ],
+  "name": "Salt States",
+  "patterns": [ { "include": "source.yaml"} ],
+  "scopeName": "source.salt"
+}

@@ -1,0 +1,59 @@
+'.source.salt':
+  'Creates top-level SLS file':
+    prefix: 'base'
+    body:"""
+      base:
+        '*':
+          - core
+          - ${1:apache}
+        'os:${2:Ubuntu}':
+          - match: grain
+    """
+  'Install package':
+    prefix: 'pkg'
+    body:"""
+      ${1:package_name}:
+        pkg:
+          - installed
+          - version: ${2:2.0.0}
+        service.running:
+          enabled: True
+          require:
+            - pkg: ${3:package_name}
+    """
+  'User: Present':
+    'prefix': 'user'
+    'body': """
+      ${1:username}:
+        user.present:
+          - fullname: '${2:Name}'
+          - shell: /bin/${4:bash}
+          - home: /home/${5:username}
+          - uid: ${6:4000}
+          - gid: ${7:4000}
+          - groups:
+            - ${8:wheel}
+          - remove_groups: ${9:True}
+    """
+  'User: Absent':
+    'prefix': 'usera'
+    'body': """
+      remove-user-${1:username}:
+        user.absent:
+          - name: ${2:username}
+          - purge: ${3:False}
+          - force: ${4:False}
+    """
+  'File: Managed':
+    'prefix': 'filem'
+    'body': """
+      '${1:/path/to/target}':
+        file.managed:
+          - source: salt:/${2:template/path.tpl}
+          - user: ${3:root}
+          - group: ${4:root}
+          - mode: ${5:644}
+          - require:
+            - pkg: ${6:apache}
+          - template: jinja
+    """
