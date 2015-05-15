@@ -1,6 +1,6 @@
 {
   "fileTypes": [ "sls" ],
   "name": "Salt States",
-  "patterns": [ { "include": "source.yaml"} ],
+  "patterns": [  { "include": "source.jinja" }, { "include": "source.yaml"} ],
   "scopeName": "source.salt"
 }
