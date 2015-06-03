@@ -9,6 +9,7 @@
     "atom": ">0.50.0"
   },
   "dependencies": {
-    "language-yaml": "git+https://github.com/atom/language-yaml.git"
+    "language-yaml": "git+https://github.com/atom/language-yaml.git",
+    "atom-jinja2": "git+https://github.com/danielchatfield/atom-jinja2.git"
   }
 }
